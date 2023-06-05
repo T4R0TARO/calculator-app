@@ -1,0 +1,29 @@
+/* TEXT ANIMATION */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.text-left {
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+  transform: translateX(-1300%);
+}
+
+.text-right {
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+  transform: translateX(1300%);
+}
+
+.text-right.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.text-left.show {
+  opacity: 1;
+  transform: translateX(0);
+}
