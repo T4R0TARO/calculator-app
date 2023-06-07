@@ -1,5 +1,5 @@
 import "./App.css";
-import TextAnimation from "./components/TextAnimation";
+import * as math from "mathjs";
 import { useState } from "react";
 
 function App() {
@@ -8,14 +8,31 @@ function App() {
 
   function handleButtonClick(value) {
     console.log(value);
+
+    if (value === "=") {
+      try {
+        const evalResult = math.evaluate(input);
+        setResult(evalResult);
+        setInput(evalResult);
+        setInput("");
+      } catch (error) {
+        setInput("Error");
+        setResult("");
+      }
+    } else if (value === "C") {
+      setInput("");
+      setResult("");
+    } else {
+      setInput(input + value);
+    }
   }
 
   return (
     <>
       <div className="calculator">
         <div className="display">
-          <div className="input">input</div>
-          <div className="result">result</div>
+          <div className="input">{input}</div>
+          <div className="result">{result}</div>
         </div>
         <div className="buttons">
           <div className="row">
